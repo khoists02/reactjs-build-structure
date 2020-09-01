@@ -1,0 +1,137 @@
+.form-row {
+  $form-gutter: 10px;
+
+  margin: 0 (-$form-gutter);
+
+  .form-control {
+    padding: 0 $form-gutter;
+    margin-bottom: 20px;
+  }
+}
+
+.form-label {
+  display: block;
+  min-height: 18px;
+  margin-bottom: $size-xs;
+  font-weight: 600;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px $size-sm;
+  border: 1px solid $color-border;
+  border-radius: 3px;
+  line-height: 18px;
+  color: $color-text;
+  transition: $transition-common;
+  resize: vertical;
+  -webkit-appearance: none;
+
+  &[required] {
+    box-shadow: none; // prevent firefox auto put box shadow for require
+  }
+
+  &.ng-invalid.ng-touched {
+    border: 1px solid $color-red;
+  }
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $color-gray-3;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: $color-gray-3;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: $color-gray-3;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: $color-gray-3;
+    opacity: 1;
+  }
+
+  &:hover {
+    border-color: $color-gray-3;
+  }
+
+  &:focus {
+    border-color: $color-theme;
+  }
+
+  &[readonly] {
+    cursor: unset;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: $color-background-gray-light;
+  }
+}
+
+textarea.form-input {
+  transition: none;
+}
+
+.form-text {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.form-text-warning {
+  margin-top: 2px;
+  padding-top: 1px;
+  font-size: 13px;
+  border-top: 2px solid $color-warning;
+  color: $color-warning;
+}
+
+.input-group {
+  display: flex;
+  position: relative;
+
+  .form-input {
+    border-radius: 0 3px 3px 0;
+  }
+}
+
+.input-group-prepend {
+  position: relative;
+  min-width: 40px;
+  text-align: center;
+  border: 1px solid $color-border;
+  border-right: 0;
+  border-radius: 3px 0 0 3px;
+
+  .btn {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    color: $color-text-sub;
+  }
+
+  .text {
+    height: 100%;
+    padding: 0 $size-xs;
+
+    @include flex-center;
+  }
+}
+
+.input-group-text {
+  @include center-absolute;
+}
+
+.asterisk {
+  display: inline;
+  font-style: normal;
+  font-size: 11px;
+  vertical-align: text-top;
+  color: $color-red;
+
+  &::after {
+    content: ' *';
+  }
+}

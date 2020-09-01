@@ -1,0 +1,13 @@
+.badge {
+  min-width: 13px;
+  height: 13px;
+  line-height: 13px;
+  white-space: nowrap;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 600;
+  text-align: center;
+  background-color: $color-danger;
+  border-radius: 50px;
+  padding: 0 2px;
+}

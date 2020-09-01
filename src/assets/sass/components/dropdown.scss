@@ -1,0 +1,127 @@
+// TODO: refactor these scss
+.form-dropdown {
+  min-width: 120px;
+  background-color: #ffffff;
+
+  .dropdown-toggle {
+    position: relative;
+    display: block;
+    padding: 7px $size-sm*2 7px $size-sm;
+    border: 1px solid $color-border;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &::after {
+      content: '\e90a'; // icon-angle-down
+      font-family: 'font-icon', sans-serif;
+      border: 0;
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 10px;
+      background-color: #ffffff;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  @include mobile-only {
+    &.mobilized {
+      .dropdown-menu {
+        padding: 20px 0;
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        z-index: $z-index-modal-backdrop + 1;
+        transform: translate(-50%, -50%) !important;
+        min-width: calc(100% - 40px);
+        border-radius: 4px;
+      }
+
+      &::before {
+        content: "";
+      }
+    }
+
+    &.show.mobilized::before {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: $z-index-modal-backdrop;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: $transition-common;
+    }
+  }
+}
+
+.dropdown-menu {
+  display: none;
+  min-width: 100px;
+  max-height: none;
+  margin: $size-xs 0 0;
+  padding: 0;
+  background-color: #ffffff;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+  z-index: $z-index-dropdown;
+
+  @include tablet-down {
+    margin: 0;
+    box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px $size-lg;
+  color: $color-text;
+  background-color: #ffffff;
+  transition: $transition-common;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-background-theme;
+  }
+
+  &.active {
+    color: $color-theme;
+    font-weight: 600;
+    background-color: $color-background-theme;
+  }
+}
+
+.ngb-typeahead {
+  position: relative;
+
+  .dropdown-item {
+    display: flex;
+    width: 100%;
+    padding: 5px $size-sm;
+    font-size: 13px;
+    text-align: left;
+    color: $color-text;
+    background-color: #ffffff;
+    border: 0;
+    box-shadow: none;
+    cursor: pointer;
+    transition: $transition-common;
+
+    &.active {
+      color: #ffffff;
+      background-color: $color-theme;
+    }
+  }
+}
