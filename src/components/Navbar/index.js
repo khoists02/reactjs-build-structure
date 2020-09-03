@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
-import CounterHook from '../../hooks/CounterHook';
+import React from 'react';
+import SubMenu from '../SubMenu';
 
-class Navbar extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Navbar</h1>
-        <CounterHook></CounterHook>
+import './index.scss';
+
+const Navbar =(props)=> {
+  return (
+    <div className="nav-bar ">
+      <div className="main block-site flex-center-between">
+        <div className="left-nav">Medium</div>
+        <div className="right-nav">Profile</div>
       </div>
-    )
-  }
+      {/* SUB NAVBAR HERE */}
+      <SubMenu></SubMenu>
+    </div>
+  )
 }
+
 
 export default Navbar;

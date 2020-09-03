@@ -1,6 +1,12 @@
 .logo {
   display: flex;
 
+  &.no-border {
+    img {
+      border-radius: 0;
+    }
+  }
+
   img {
     width: 50px;
     height: 50px;

@@ -8,13 +8,14 @@ const Sidebar = (props) => {
   useEffect(() => {
     setMenus([
       { id: 1, routerLink: '/', routerName: 'Dashboard' },
-      { id: 2, routerLink: '/about-me', routerName: 'About me' },
-      { id: 3, routerLink: '/skill', routerName: 'Skills' },
+      { id: 2, routerLink: '/about', routerName: 'About me' },
+      { id: 3, routerLink: '/skills', routerName: 'Skills' },
+      { id: 4, routerLink: '/articles', routerName: 'My Articles' },
     ]);
   }, [])
 
   return (
-    <div className="side-bar flex-center">
+    <div className="side-bar ">
       <ul className="p-none m-none">
         {menus.map(menu => {
           return <LinkItem key={menu.id} routerLink={menu.routerLink} routerName={menu.routerName} />

@@ -7,10 +7,13 @@ export default function AppRoute({
   path,
   exact,
   isPrivate,
+  key,
+  id,
   ...props
 }) {
   return (
     <Route
+      key={key}
       exact={exact}
       path={path}
       render={props => isPrivate ? (<div>Un Authenticated</div>) : (<Component {...props} />)}

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import location from '../../assets/images/pngtree-vector-location-icon-png-image_317888.jpg';
+import clock from '../../assets/images/png-transparent-round-black-analog-clock-illustration-clock-time-icon-time-noun-project-symbol-scalable-vector-graphics-thumbnail.png';
+import './index.scss';
 
 const WorkHistory =(props)=> {
   const [workHistories, setWorkHistories] = useState([]);
@@ -37,17 +40,19 @@ const WorkHistory =(props)=> {
 
   return (
     <div className="work-history m-t-md">
-      <div className="big-title m-b-lg font-h3">
+      <div className="big-title m-b-sm font-h3">
         WORK HISTORY
       </div>
       {workHistories.map(work=> {
         return (
           <div className="work-history--item m-b-md" key={work.id}>
             <div className="title font-h3 highlight">{work.title}</div>
-            <div className="company">{work.company}</div>
+            <div className="company font-h3">{work.company}</div>
             <div className="time-locations flexbox m-tb-xxs">
-              <span>{work.timeFrom} - {work.timeTo}</span>
-              <span>{work.location}</span>
+              <span className="m-r-md flexbox">
+                <img className="logo-clock m-r-xxs" src={clock} />
+                {work.timeFrom} - {work.timeTo}</span>
+              <span className="flexbox"><img className="logo-location m-r-xxs" src={location} /> {work.location}</span>
             </div>
             <div className="description m-t-xs">
               {work.description}
