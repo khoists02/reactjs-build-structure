@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
-import Navbar from '../Navbar';
-import Header from '../Header';
+import React from 'react';
 import Sidebar from '../Sidebar';
+import './main.scss';
 
 const Main = (props) => {
   return (
-    <div class="main">
-      <Navbar />
-      <Header />
-      <Sidebar />
-      {props.children}
+    <div className="main flexbox">
+      {/* <Navbar />
+      <Header /> */}
+      <div className="sidebar p-md">
+        <Sidebar />
+      </div>
+      <div className="body flex-auto p-md">
+        {props.children}
+      </div>
     </div>
   )
 }

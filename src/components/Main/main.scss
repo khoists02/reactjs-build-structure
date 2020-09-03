@@ -1,0 +1,12 @@
+@import '../../assets/sass/tools/index';
+@import '../../assets/sass/settings/index';
+
+.sidebar {
+  max-width: 300px;
+  width: 30%;
+  height: 100vh;
+  background: $color-theme;
+  display: flex;
+  justify-content : center;
+  align-items: center;
+}

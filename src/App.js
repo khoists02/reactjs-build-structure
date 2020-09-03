@@ -1,14 +1,16 @@
 import React from 'react';
-import { Router, Switch } from 'react-router-dom';
+import { Router, Switch, Link } from 'react-router-dom';
 import history from './services/history';
 import routes from './routes';
 import AppRoute from './routes/AppRoute';
 import Main from './components/Main';
 
-function App() {
+const App = () => {
+  console.log(routes);
+
   return (
-    <Main>
-      <Router history={history}>
+    <Router history={history}>
+      <Main>
         <Switch>
           {routes.map(route => (
             <AppRoute
@@ -19,8 +21,8 @@ function App() {
             ></AppRoute>
           ))}
         </Switch>
-      </Router>
-    </Main>
+      </Main>
+    </Router>
   );
 }
 
