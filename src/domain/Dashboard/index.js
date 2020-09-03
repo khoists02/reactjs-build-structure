@@ -1,8 +1,18 @@
 import React from "react";
+import BasicResume from '../../components/BasicResume';
+import WorkHistory from '../../components/WorkHistory';
+import Education from '../../components/Education';
 
-const Dashboard =()=> {
+const Dashboard = () => {
   return (
-    <h1 className="strong font-h3 highlight">Dashboard</h1>
+    <div>
+      <BasicResume />
+
+      <WorkHistory />
+
+      <Education />
+    </div>
+
   )
 }
 

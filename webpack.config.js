@@ -1,7 +1,5 @@
 const path = require('path');
 
-const ASSET_PATH = process.env.ASSET_PATH || '/';
-
 module.exports = {
     entry: "./src/index.js",
     output: {
@@ -22,6 +20,9 @@ module.exports = {
                 'css-loader',
                 'sass-loader'
             ]
+        }, {
+          test: /\.(jpe?g|png|gif|svg)$/i, 
+          loader: "url-loader?limit=8192"
         }]
     },
     devtool: 'cheap-module-eval-source-map',

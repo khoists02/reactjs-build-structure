@@ -3,23 +3,22 @@ import LinkItem from '../LinkItem';
 import './index.scss';
 
 const Sidebar = (props) => {
-  const [ menus, setMenus ] = useState([]);
+  const [menus, setMenus] = useState([]);
 
   useEffect(() => {
     setMenus([
       { id: 1, routerLink: '/', routerName: 'Dashboard' },
       { id: 2, routerLink: '/about-me', routerName: 'About me' },
-      { id: 3, routerLink: '/signin', routerName: 'Sign In' },
+      { id: 3, routerLink: '/skill', routerName: 'Skills' },
     ]);
   }, [])
-  setMenus
 
   return (
     <div className="side-bar flex-center">
       <ul className="p-none m-none">
-        { menus.map(menu=> {
+        {menus.map(menu => {
           return <LinkItem key={menu.id} routerLink={menu.routerLink} routerName={menu.routerName} />
-        }) }
+        })}
       </ul>
     </div>
   )

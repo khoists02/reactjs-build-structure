@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Information from '../Information';
 
 class Header extends Component {
   render() {
     return (
-      <h1>Header</h1>
+      <Information></Information>
     )
   }
 }

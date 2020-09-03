@@ -1,5 +1,7 @@
 import React from 'react';
 import Sidebar from '../Sidebar';
+import Header from '../Header';
+
 import './main.scss';
 
 const Main = (props) => {
@@ -7,10 +9,11 @@ const Main = (props) => {
     <div className="main flexbox">
       {/* <Navbar />
       <Header /> */}
-      <div className="sidebar p-md">
+      <div className="sidebar">
+        <Header />
         <Sidebar />
       </div>
-      <div className="body flex-auto p-md">
+      <div className="body ">
         {props.children}
       </div>
     </div>

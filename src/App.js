@@ -6,8 +6,6 @@ import AppRoute from './routes/AppRoute';
 import Main from './components/Main';
 
 const App = () => {
-  console.log(routes);
-
   return (
     <Router history={history}>
       <Main>
