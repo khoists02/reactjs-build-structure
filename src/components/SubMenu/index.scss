@@ -27,6 +27,10 @@
       &:first-child {
         margin-left: -20px;
       }
+
+      &.active {
+        color: #333333;
+      }
     }
   }
 }

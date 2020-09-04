@@ -48,6 +48,8 @@ const ArticleList =(props)=> {
       {articles.map(article=> {
         return <ArticleItem key={article.id} article={article} />
       })}
+
+      {/* WE WILL BUILD THE SCROLL EVENT HER WE HAVE THE BOTTOM */}
     </div>
   )
 }
