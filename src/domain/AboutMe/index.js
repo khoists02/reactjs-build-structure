@@ -20,7 +20,7 @@ const AboutMe =(props)=> {
   ];
   return (
     <div>
-      <div class="socials m-b-sm highlight font-h4">
+      <div className="socials m-b-sm highlight font-h4">
         You can see more my information on social network
       </div>
       <ListOfLogo logos={initialList} noborder></ListOfLogo>

@@ -42,16 +42,12 @@ const ArticleList =(props)=> {
 
   useEffect(() => {
     const { keys } = props;
-    console.log('keys', keys);
     const cloneArticles = [];
     initialArticles.forEach(article=> {
-      if (keys.find(x=> x?.indexOf(article.key) > -1)) {
-        cloneArticles.push(article);
-      }
-      
+        keys.find(x=> x?.indexOf(article.key) > -1) &&  cloneArticles.push(article);
     })
     setArticles(cloneArticles);
-  }, [props.keys]);
+  }, [props.keys]); // Use useEffect detecting the change value of props , remember the [props.keys] in the end function
 
   useEffect(()=> {
     setArticles(initialArticles);
