@@ -12,6 +12,7 @@ const ArticleItem =(props)=> {
 
         <div className="sort-des">Build a simple task-tracker app from scratch with React</div>
 
+        {/* TimeAgo */}
         <div className="date font-h5">Aug 4, 2019 </div>
 
         <div className="control" style={{ display: 'none' }}></div>

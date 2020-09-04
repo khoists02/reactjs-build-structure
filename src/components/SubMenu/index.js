@@ -21,8 +21,9 @@ const SubMenu =(props)=> {
       id: 8, label: 'Girl and life', logo: '', path: ''
     }
   ];
+  const classStandToTop = props.standTop ? 'stand-top' : '';
   return (
-    <div className="sub-menu">
+    <div className={"sub-menu " + classStandToTop}>
       <div className="categories block-site flexbox">
         {initialCategories.map(category=> {
           return (
