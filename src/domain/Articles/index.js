@@ -31,7 +31,6 @@ const Articles =(props)=> {
   }, [goingUp]);
 
   const handleOnChangeKey =(keys)=> {
-    console.log('--- keys ---', keys);
     setKeys(keys);
   }
 
