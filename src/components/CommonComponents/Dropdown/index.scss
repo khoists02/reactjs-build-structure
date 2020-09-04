@@ -1,0 +1,13 @@
+.result {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+  width: 150px;
+  z-index: 100;
+  background: #ffffff;
+
+  &--item {
+    padding: 10px 20px;
+  }
+}

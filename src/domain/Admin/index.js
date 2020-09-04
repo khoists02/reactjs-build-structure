@@ -16,8 +16,9 @@ const Admin =()=> {
 
       <div className="body m-tb-lg block-site">
         Body
-        {/* HERE IS THE DASHBOARD CHART WE WILL HANDLE IN THE NEXT MONTH  */} 
-
+        {/* HERE IS THE DASHBOARD CHART WE WILL HANDLE IN THE NEXT MONTH  */}
+        {/** PUT THE LASTED TWO ITEMS FOR NEW ARTICLE OR ANY UPDATE THE PROFILE */}
+        {/** HANDLE THE BOTTOM FOR ADMIN PAGE */}
       </div>
     </div>
   )
