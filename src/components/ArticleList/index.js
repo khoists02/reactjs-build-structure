@@ -9,6 +9,8 @@ const ArticleList =(props)=> {
 
   const [ articles, setArticles ] = useState([]);
 
+  console.log('---- keys ----', props.keys);
+
   const initialArticles = [
     {
       id: 1,

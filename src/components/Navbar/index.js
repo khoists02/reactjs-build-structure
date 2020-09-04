@@ -5,6 +5,9 @@ import RightNavbar from '../RightNavbar';
 import './index.scss';
 
 const Navbar =(props)=> {
+  const handleChangeKey =(keys)=> {
+    props.onChangeKey(keys);
+  }
   return (
     <div className="nav-bar ">
       <div className="main block-site flex-center-between" style={{ visibility: props.isHideNav ? 'hidden' : 'visible' }}>
@@ -14,7 +17,7 @@ const Navbar =(props)=> {
           </div>
       </div>
       {/* SUB NAVBAR HERE */}
-      <SubMenu standTop={props.isHideNav}></SubMenu>
+      <SubMenu standTop={props.isHideNav} onChangeType={handleChangeKey}></SubMenu>
     </div>
   )
 }

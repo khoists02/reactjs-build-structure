@@ -25,6 +25,11 @@ const SubMenu =(props)=> {
 
   const classStandToTop = props.standTop ? 'stand-top' : '';
 
+  const onSelect =(id)=> {
+    setActive(id);
+    props.onChangeType(initialCategories.find(x=> x.id === id)?.keys);
+  }
+
   return (
     <div className={"sub-menu " + classStandToTop}>
       <div className="categories block-site flexbox">
@@ -32,7 +37,7 @@ const SubMenu =(props)=> {
           return (
             <div
               key={category.id}
-              onClick={()=> setActive(category.id)}
+              onClick={()=> onSelect(category.id)}
               className={`categories--item flex-center cursor-pointer ${active === category.id ? 'active strong' : ''}`}>
               {category.label}
             </div>
