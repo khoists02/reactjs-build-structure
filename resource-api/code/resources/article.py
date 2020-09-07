@@ -1,5 +1,6 @@
 import sqlite3
 from flask_restful import Resource, reqparse
+from flask import request
 from flask_jwt import jwt_required
 from utils.query import Query
 from models.article import ArticleModel
@@ -99,13 +100,20 @@ class Article(Resource):
     return articles
 
 class ArticleList(Resource):
-  @jwt_required()
+  # @jwt_required()
   def get(self):
+    args = request.args
+    keys = args['keys']
+    print(keys)
     connection = sqlite3.connect('data.db')
     cursor = connection.cursor()
-    select = "SELECT * FROM articles"
+    if keys.find('DEFAULT') > -1:
+      select =  "SELECT * FROM articles"
+      result = cursor.execute(select)
+    else:
+      select = "SELECT * FROM articles WHERE key=?"
+      result = cursor.execute(select, (keys,))
 
-    result = cursor.execute(select)
     articles = []
     for row in result:
       articles.append({
