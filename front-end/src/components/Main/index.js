@@ -10,7 +10,6 @@ const Main = (props) => {
 
   const handleToggle =()=> {
     setToggle(!toggle);
-    console.log('toggle', toggle);
   }
 
   return (
