@@ -15,19 +15,18 @@ const Main = (props) => {
   return (
     <div className="main flexbox">
       {props.adminLayout &&
-        <div className="flexbox">
-          <div className="sidebar" style={{ visibility: toggle ? 'hidden': 'visible' }}>
+        <div className="flexbox full-width">
+          <div className={`sidebar sidebar-admin`} style={{ display: toggle ? 'none': 'block' }}>
             <Sidebar items={
                   [
-                    // { id: 1, routerLink: '/', routerName: 'Dashboard' },
-                    // { id: 2, routerLink: '/about', routerName: 'About me' },
-                    // { id: 3, routerLink: '/skills', routerName: 'Skills' },
-                    // { id: 4, routerLink: '/articles', routerName: 'My Articles' },
+                    { id: 1, routerLink: '', routerName: 'Article' },
+                    { id: 2, routerLink: '', routerName: 'Profile' },
+                    { id: 3, routerLink: '', routerName: 'Users' },
                   ]
                 } isAdmin={true} toggle={toggle} />
           </div>
-          <div className={`body ${toggle ? 'block-site': ''}`}>
-            <HeaderAdmin toggle={handleToggle}></HeaderAdmin>
+          <div className={`body full-width ${toggle ? 'block-site m-tb-md': ''}`}>
+            <HeaderAdmin isToggle={toggle} toggle={handleToggle}></HeaderAdmin>
             <div className="wrapper">
               {props.children}  
             </div> 

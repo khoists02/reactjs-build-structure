@@ -8,6 +8,10 @@
   position: fixed;
   top: 0;
   bottom: 0;
+
+  &.sidebar-admin {
+    background: #3c4b64;
+  }
 }
 
 .body {

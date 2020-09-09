@@ -7,6 +7,11 @@ from models.article import ArticleModel
 
 class Article(Resource):
   parser =  reqparse.RequestParser()
+  parser.add_argument('id', 
+    type=int,
+    required=False,
+  )
+
   parser.add_argument('title', 
     type=str,
     required=False,
@@ -46,6 +51,9 @@ class Article(Resource):
     data = Article.parser.parse_args()
     article = ArticleModel(**data)
 
+    if data["title"] == "":
+      return {"message": "error"}, 400
+
     try:
       article.save_to_db()
     except:
@@ -53,47 +61,39 @@ class Article(Resource):
 
     return { 'article': article.json() }, 201
 
-  @jwt_required()
+  # @jwt_required()
   def put(self):
     data = Article.parser.parse_args()
-    update_article = {
-      'title': data['title'],
-      'key': data['key'],
-      'tag': data['tag'],
-      'sortDescription': data['sortDescription'],
-      'date': data['date'],
-      'handleCode': data['handleCode'],
-      'user_id': data['user_id']
-    }
-    if self.find_by_handleCode(data['handleCode']) is None:
-      try:
-        self.insert(update_article)
-      except:
-        return {"message": "Something was wrong when you try to update this article"}, 500
+    # article = ArticleModel(**data)
+    article = ArticleModel.find_by_article_id(data["id"])
+    if article is None:
+      article = ArticleModel(**data)
     else:
-      try:
-        self.update(update_article)
-      except:
-        return {"message": "Something was wrong when you try to update this article"}, 500
-    
-    return update_article
+      article.id = data["id"]
+      article.title = data["title"]
+      article.tag = data["tag"]
+      article.sortDescription = data["sortDescription"]
+      article.date = data["date"]
+      article.key = data["key"]
+      article.handleCode = data["handleCode"]
+      article.user_id = data["user_id"]
 
-  @jwt_required()
+    try:
+      article.save_to_db()
+    except:
+      return {"message": "Something was wrong when you try to update this article"}, 500
+
+    return article.json()
+
+  # @jwt_required()
   def delete(self):
     data = Article.parser.parse_args()
-    if self.find_by_handleCode(data['handleCode']) is None:
-      return {"message": "Article not found"}, 400
-
-    connection = sqlite3.connect('data.db')
-    cursor = connection.cursor()
-
-    delete = "DELETE FROM articles WHERE handleCode=?"
-    cursor.execute(delete, (data['handleCode'],))
-
-    connection.commit()
-    connection.close()
-
-  @jwt_required()
+    article = ArticleModel.find_by_article_id(data['id'])
+    if article:
+      article.delete_db()
+    return { "message": "Article deleted." }
+    
+  # @jwt_required()
   def get(self):
     data = Article.parser.parse_args()
     articles = self.find_by_user_id(data)
@@ -102,29 +102,9 @@ class Article(Resource):
 class ArticleList(Resource):
   # @jwt_required()
   def get(self):
-    args = request.args
-    keys = args['keys']
-    print(keys)
-    connection = sqlite3.connect('data.db')
-    cursor = connection.cursor()
-    if keys.find('DEFAULT') > -1:
-      select =  "SELECT * FROM articles"
-      result = cursor.execute(select)
+    if request.args:
+      keys = request.args['keys']
     else:
-      select = "SELECT * FROM articles WHERE key=?"
-      result = cursor.execute(select, (keys,))
-
-    articles = []
-    for row in result:
-      articles.append({
-        'id': row[0],
-        'title': row[1],
-        'key': row[2],
-        'tag': row[3],
-        'sortDescription': row[4],
-        'date': row[5],
-        'handleCode':row[6],
-        'user_id':row[7],
-      })
-
-    return {'articles': articles}
+      keys = ""
+    articles = ArticleModel.get_all_article(keys)
+    return {"articles": articles}, 200

@@ -20,6 +20,7 @@
   }
 
   .left {
-    max-width: 500px;
+    max-width: calc(100% - 250px);
+    width: calc(100% - 250px);
   }
 }

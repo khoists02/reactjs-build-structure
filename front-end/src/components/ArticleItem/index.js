@@ -11,7 +11,7 @@ const ArticleItem = (props) => {
   }
 
   return (
-    <div className={`item m-b-sm p-sm flexbox`}>
+    <div className={`item m-b-sm p-md flexbox`}>
       <div className="left pos-r">
         <div className="tag font-h4 m-b-xxs">{props.article.tag}</div>
         <div className="title font-h3 m-b-xxs">{props.article.title}</div>

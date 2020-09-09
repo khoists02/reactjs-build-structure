@@ -12,11 +12,19 @@ const Sidebar = (props) => {
   }, [props.items])
 
   return (
-    <div className="side-bar" >
+    <div className={`side-bar`} > 
       {!props.isAdmin && <ul className="p-none m-none">
         {menus.map(menu => {
           return <LinkItem key={menu.id} routerLink={menu.routerLink} routerName={menu.routerName} />
         })}
+        </ul>
+      }
+
+      {
+        props.isAdmin && <ul className="p-none m-none">
+          {menus.map(menu => {
+            return <LinkItem key={menu.id} routerLink={menu.routerLink} routerName={menu.routerName} />
+          })}
         </ul>
       }
     </div>

@@ -18,7 +18,6 @@ class Query:
     map_fields =  ','.join(map(str, fields))
     for field in fields:
       map_sp.append("?")
-    print(map_sp)
     map_values = ','.join(map(str, map_sp))
     query = "INSERT INTO {} ({}) VALUES ({})".format(tableName, map_fields, map_values)
     return query
